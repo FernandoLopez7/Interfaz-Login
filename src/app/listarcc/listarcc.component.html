@@ -1,0 +1,114 @@
+<!-- Para que el agregar se muestre como un componente encima del resto -->
+<div *ngIf="mostrarAgregar">
+  <button class="closeBtn" mat-raised-button focusable="false" (click)="showAdd()">
+    <mat-icon fontIcon="close-box"></mat-icon>
+  </button>
+  <app-nuevo-centro-costo></app-nuevo-centro-costo>
+</div>
+
+
+<div class="cardContainer">
+
+  <div class="contenedorOpciones">
+    <button mat-raised-button color="edit" focusable="false" (click)="showAdd()">
+      <mat-icon fontIcon="add-circle">Editar</mat-icon>
+      Agregar Centro de Costo
+    </button>
+  </div>
+
+
+
+  <mat-card class="tableCard">
+    <mat-card-title>Lista de Centros de Costos</mat-card-title>
+    <div class="contenedorOpciones">
+      <form>
+        <!-- <div class="inputs"> -->
+        <!-- <h1>Editar centro de costo</h1> -->
+
+        <mat-form-field>
+          <mat-label class="inputsBusqueda">Buscar Centro de Costos</mat-label>
+          <input class="inputsBusqueda" [(ngModel)]="busquedaNombreCC" name="nombreCentroCostos" matInput placeholder="Nombre Centro Costos">
+        </mat-form-field>
+
+        <button mat-raised-button color="edit" focusable="false" (click)="buscar()">
+          <mat-icon fontIcon="edit">Buscar</mat-icon>
+          Buscar
+        </button>
+        <!-- </div> -->
+
+      </form>
+    </div>
+    <table mat-table [dataSource]="costos" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="Codigo">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.Codigo}} </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="NombreCentroCostos">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.NombreCentroCostos}} </td>
+
+      </ng-container>
+
+
+      <ng-container matColumnDef="Borrar">
+        <th mat-header-cell *matHeaderCellDef> Borrar </th>
+        <td mat-cell *matCellDef="let element;">
+          <button mat-raised-button color="warn" focusable="false" (click)="btnBorrar(element)">
+            <mat-icon fontIcon="delete">Borrar</mat-icon>
+            Borrar
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Editar">
+        <th mat-header-cell *matHeaderCellDef> Editar </th>
+        <td mat-cell *matCellDef="let element;">
+          <button mat-raised-button color="edit" focusable="false" (click)="btnEditar(element)">
+            <mat-icon fontIcon="edit">Editar</mat-icon>
+            Editar
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card>
+</div>
+
+<!-- <th mat-header-cell *matHeaderCellDef> Borra? </th>
+    <td mat-cell *matCellDef="let j = index;">
+      <button mat-raised-button color="warn" focusable="false" >
+        Borra?
+      </button>
+    </td> -->
+
+<!-- Weight Column -->
+<!-- <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container> -->
+
+<!-- Symbol Column -->
+<!-- <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container> -->
+
+
+
+
+<!-- <mat-list>
+  <mat-list-item *ngFor="let costo of costos">
+    <mat-card>
+      <mat-card-content>
+        <p matListItemLine>
+          <span>{{costo.Codigo}}</span>
+          <span class="demo-2"> -- {{costo.NombreCentroCostos}}</span>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-list-item>
+</mat-list> -->

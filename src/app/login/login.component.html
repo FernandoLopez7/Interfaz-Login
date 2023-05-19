@@ -1,0 +1,66 @@
+<!-- <div class="container">
+  <div class="cardContainer">
+
+    
+  </div>
+</div> -->
+
+<!-- <div class="container">
+  <div class="cardContainer">
+    <mat-card class="matCard">
+      <mat-card-header class="cardTitle">
+        <mat-card-title >
+          Ingresar
+        </mat-card-title>
+      </mat-card-header>
+      <img class="imagen" mat-card-image src="../../assets//images/loginImage.png" alt="Imagen de ejemplo">
+      <mat-card-content>
+        <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <mat-form-field class="login-form-field">
+            <input matInput placeholder="Usuario" [(ngModel)]="username" name="username" required>
+          </mat-form-field>
+          
+          <mat-form-field class="login-form-field">
+            <input matInput placeholder="Contraseña" [(ngModel)]="password" name="password" type="password" required>
+          </mat-form-field>
+
+          <select data-placeholder="Select box" [(ngModel)]="emisorSeleccionado" (change)="onEmisorSeleccionado()" name = "emisor" >
+            <option *ngFor="let emisor of emisores" [ngValue]="emisor">{{ emisor.Codigo }}  -  {{ emisor.NombreEmisor }}</option>
+          </select>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid">Iniciar
+            sesión</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div> -->
+
+<body id="particles-js"></body>
+<div class="animated bounceInDown">
+  <div class="container">
+    <span class="error animated tada" id="msg"></span>
+    <form name="form1" class="box" onsubmit="return checkStuff()" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <h1>Administración<span></span></h1>
+      <h5>Ingrese a su cuenta</h5>
+        <!-- <input type="text" name="email" placeholder="Usuario" autocomplete="off"> -->
+        <input type="text" matInput placeholder="Usuario" [(ngModel)]="username" name="username" required>
+        <i class="typcn typcn-eye" id="eye"></i>
+        <!-- <input type="password" name="password" placeholder="Contraseña" id="pwd" autocomplete="off"> -->
+        <input type="password" matInput placeholder="Contraseña" [(ngModel)]="password" name="password" type="password" required>
+        <div class="selector">
+          <select [(ngModel)]="emisorSeleccionado" (change)="onEmisorSeleccionado()" name="emisor">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option *ngFor="let emisor of emisores" [ngValue]="emisor">{{ emisor.Codigo }} - {{ emisor.NombreEmisor }}</option>
+          </select>
+        </div>
+
+
+
+
+        <input mat-raised-button color="primary" type="submit" [disabled]="!loginForm.form.valid"  class="btn1">
+      </form>
+
+  </div> 
+
+</div>
